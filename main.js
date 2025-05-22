@@ -45,12 +45,13 @@ const data = {
       { id: 'jugada-maestra', name: 'JUGADA MAESTRA' },
     ],
     socialMedia: [
+      // Reordered: Facebook and YouTube first
+      { id: 'facebook', name: 'FACEBOOK', icon: 'Facebook', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/43a608b8-7c3d-4ba2-a08a-21991d52dcd7/page/gnpEF' },
+      { id: 'youtube', name: 'YOUTUBE', icon: 'YouTube', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/04f24418-0f58-405e-adf0-4a99882f32b8/page/gnpEF' },
       { id: 'twitter', name: 'X (TWITTER)', icon: 'X', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/e1c63634-b541-44ef-af28-77c27ff63e0b/page/gnpEF' },
       { id: 'instagram', name: 'INSTAGRAM', icon: 'Instagram', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/ec282e0b-ed12-4e16-938b-b938328b5cda/page/gnpEF' },
-      { id: 'youtube', name: 'YOUTUBE', icon: 'YouTube', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/5a14b2b1-b972-4fb7-843c-dbb1b6cfb11e/page/gnpEF' },
-      { id: 'tiktok', name: 'TIKTOK (WORKING)', icon: 'TikTok', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/b4a8cec2-b9a5-4db4-8370-c9594f08c39d/page/gnpEF' },
+      { id: 'tiktok', name: 'TIKTOK (WORKING)', icon: 'TikTok', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/67fbf071-b615-4ff7-a63f-9041fd059a88/page/gnpEF' },
       { id: 'public-relations', name: 'PUBLIC RELATIONS', icon: 'Public Relations', palfReportUrl: 'https://dancing-swan-64a0b2.netlify.app/' },
-      { id: 'facebook', name: 'FACEBOOK', icon: 'Facebook', palfReportUrl: 'https://lookerstudio.google.com/embed/reporting/43a608b8-7c3d-4ba2-a08a-21991d52dcd7/page/gnpEF' },
     ],
   },
   truvatos: [
@@ -223,11 +224,12 @@ function switchTab(tabId) {
       palfBandButtonsContainer.classList.add('active');
       populatePalfBandButtons();
       selectedPalfBandId = null;
-      const twitterItem = data.palf.socialMedia.find(item => item.id === 'twitter');
-      if (twitterItem) {
-        const twitterLi = document.querySelector('#palf-list li[data-item-id="twitter"]');
-        if (twitterLi) {
-          handleSelection({ target: twitterLi }, data.palf.socialMedia);
+      // Select the first item in the reordered list (Facebook)
+      const firstPalfItem = data.palf.socialMedia[0];
+      if (firstPalfItem) {
+        const firstPalfLi = document.querySelector(`#palf-list li[data-item-id="${firstPalfItem.id}"]`);
+        if (firstPalfLi) {
+          handleSelection({ target: firstPalfLi }, data.palf.socialMedia);
         }
       }
     } else if (tabId === 'truvatos') {
@@ -270,11 +272,12 @@ function handlePalfBandSelection(bandId) {
     }
   });
 
-  const twitterItem = data.palf.socialMedia.find(item => item.id === 'twitter');
-  if (twitterItem) {
-    const twitterLi = document.querySelector('#palf-list li[data-item-id="twitter"]');
-    if (twitterLi) {
-      handleSelection({ target: twitterLi }, data.palf.socialMedia);
+  // After selecting a band, default to the first social media item (Facebook)
+  const firstPalfItem = data.palf.socialMedia[0];
+  if (firstPalfItem) {
+    const firstPalfLi = document.querySelector(`#palf-list li[data-item-id="${firstPalfItem.id}"]`);
+    if (firstPalfLi) {
+      handleSelection({ target: firstPalfLi }, data.palf.socialMedia);
     }
   }
 

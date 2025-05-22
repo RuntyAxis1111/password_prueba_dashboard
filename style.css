@@ -11,35 +11,41 @@
   --sidebar-width-desktop: 250px;
   --header-height: 64px;
   --gap: 15px;
+  --band-buttons-height: 32px; /* Define height for band buttons */
 
-  --color-black: #000000;
-  --color-yellow: #FFD700;
-  --color-white: #FFFFFF;
-  --color-light-grey: #B0B0B0;
-  --color-dark-grey: #333333;
-  --color-panel-background: #FFFFFF;
-  --color-sidebar-gradient-start: #000000;
-  --color-sidebar-gradient-end: #1B1B1B;
-  --color-fire-glow: rgba(255, 165, 0, 0.5);
-  --color-neon-glow: rgba(255, 215, 0, 0.7);
+  /* Define the two primary colors */
+  --color-primary: #FFFFFF; /* White (Dominant) */
+  --color-secondary: #000000; /* Black */
 
-  --main-bg-color: var(--color-black);
-  --sidebar-bg-color-start: var(--color-black);
-  --sidebar-bg-color-end: var(--color-black);
-  --sidebar-text-color: var(--color-white);
-  --panel-bg-color: var(--color-black);
-  --panel-border-color: var(--color-yellow);
-  --header-bg-color: var(--color-black);
-  --header-text-color: var(--color-white);
-  --active-item-bg-color: var(--color-yellow);
-  --active-item-text-color: var(--color-black);
+  /* Map existing color variables to the two primary colors */
+  --color-black: var(--color-secondary);
+  --color-yellow: var(--color-secondary); /* Using black for elements previously yellow */
+  --color-white: var(--color-primary);
+  --color-light-grey: rgba(0, 0, 0, 0.1); /* Black with transparency */
+  --color-dark-grey: rgba(0, 0, 0, 0.5); /* Black with transparency */
+  --color-panel-background: var(--color-primary);
+  --color-sidebar-gradient-start: var(--color-primary);
+  --color-sidebar-gradient-end: var(--color-primary);
+  --color-fire-glow: rgba(0, 0, 0, 0.1); /* Subtle black glow */
+  --color-neon-glow: rgba(0, 0, 0, 0.2); /* Subtle black glow */
+
+  --main-bg-color: var(--color-primary);
+  --sidebar-bg-color-start: var(--color-primary);
+  --sidebar-bg-color-end: var(--color-primary);
+  --sidebar-text-color: var(--color-secondary);
+  --panel-bg-color: var(--color-primary);
+  --panel-border-color: var(--color-secondary);
+  --header-bg-color: var(--color-primary);
+  --header-text-color: var(--color-secondary);
+  --active-item-bg-color: var(--color-secondary);
+  --active-item-text-color: var(--color-primary);
   --gauge-track-color: var(--color-dark-grey);
-  --gauge-progress-color: var(--color-yellow);
-  --card-background: var(--color-black);
-  --card-box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
+  --gauge-progress-color: var(--color-secondary);
+  --card-background: var(--color-primary);
+  --card-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Black shadow */
   --card-padding-desktop: 24px;
   --card-padding-mobile: 16px;
-  --card-title-color: var(--color-yellow);
+  --card-title-color: var(--color-secondary);
   --card-title-font-size: 18px;
 
   --animation-duration: 1.5s;
@@ -58,15 +64,15 @@
 }
 
 @keyframes fireGlow {
-  0% { box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3); }
-  50% { box-shadow: 0 0 15px 5px rgba(255, 165, 0, 0.7); }
-  100% { box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3); }
+  0% { box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1); } /* Subtle black glow */
+  50% { box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2); } /* Subtle black glow */
+  100% { box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1); } /* Subtle black glow */
 }
 
 @keyframes neonGlow {
-  0% { box-shadow: 0 0 5px 2px rgba(255, 215, 0, 0.3); }
-  50% { box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7); }
-  100% { box-shadow: 0 0 5px 2px rgba(255, 215, 0, 0.3); }
+  0% { box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1); } /* Subtle black glow */
+  50% { box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2); } /* Subtle black glow */
+  100% { box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.1); } /* Subtle black glow */
 }
 
 @keyframes grow-skew-reverse {
@@ -79,7 +85,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--main-bg-color);
-  color: var(--color-white);
+  color: var(--color-secondary); /* Use secondary color for default text */
 }
 
 .main-header {
@@ -132,7 +138,7 @@ body {
   flex-grow: 1;
   flex-basis: 0;
   background-color: transparent;
-  color: var(--color-white);
+  color: var(--color-secondary); /* Use secondary color for button text */
   border: none;
   padding: 0;
   cursor: pointer;
@@ -159,8 +165,8 @@ body {
 }
 
 .nav-button:hover {
-  background-color: rgba(255, 215, 0, 0.15);
-  color: var(--color-yellow);
+  background-color: rgba(0, 0, 0, 0.15); /* Black with transparency */
+  color: var(--color-secondary);
 }
 
 .nav-button.active {
@@ -171,11 +177,11 @@ body {
 .band-buttons-container {
   display: none;
   position: fixed;
-  top: calc(var(--header-height) + 32px);
+  top: calc(var(--header-height) + 32px); /* Position below main nav */
   left: 0;
   width: 100%;
-  height: 32px;
-  background-color: var(--color-black);
+  height: var(--band-buttons-height); /* Use defined height */
+  background-color: var(--color-primary);
   z-index: 990;
   justify-content: center;
   align-items: center;
@@ -190,8 +196,8 @@ body {
   font-size: 1em;
   font-weight: bold;
   text-transform: uppercase;
-  background-color: var(--color-white);
-  color: var(--color-black);
+  background-color: var(--color-secondary); /* Use secondary for button background */
+  color: var(--color-primary); /* Use primary for button text */
   border: none;
   padding: 0 15px;
   height: 100%;
@@ -208,21 +214,21 @@ body {
 
 .band-button:hover,
 .band-button.active {
-  background-color: var(--color-black);
-  color: var(--color-white);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .container {
-  padding-top: calc(var(--header-height) + 32px);
+  padding-top: calc(var(--header-height) + 32px + var(--band-buttons-height)); /* Add band buttons height to padding */
   display: flex;
-  height: calc(100vh - var(--header-height) - 32px);
+  height: calc(100vh - var(--header-height) - 32px - var(--band-buttons-height)); /* Subtract band buttons height */
   overflow: hidden;
 }
 
 .content-section {
   display: none;
-  padding-top: calc(var(--header-height) + 32px);
-  height: calc(100vh - var(--header-height) - 32px);
+  padding-top: calc(var(--header-height) + 32px + var(--band-buttons-height)); /* Add band buttons height to padding */
+  height: calc(100vh - var(--header-height) - 32px - var(--band-buttons-height)); /* Subtract band buttons height */
   overflow: hidden;
 }
 
@@ -241,7 +247,7 @@ body {
   top: 45vh;
   width: 40px;
   height: 90px;
-  background-color: rgba(58, 58, 58, 0.9);
+  background-color: rgba(0, 0, 0, 0.9); /* Secondary with transparency */
   border: none;
   border-radius: 0 50% 50% 0;
   cursor: pointer;
@@ -251,18 +257,18 @@ body {
   justify-content: center;
   transition: left var(--transition-duration) ease,
               transform var(--transition-duration) ease;
-  color: white;
+  color: var(--color-primary); /* Primary color for icon */
   font-size: 24px;
   padding: 0;
 }
 
 .sidebar-tab:focus {
-  outline: 2px solid var(--color-yellow);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 2px;
 }
 
 .sidebar-tab:hover {
-  background-color: rgba(58, 58, 58, 1);
+  background-color: var(--color-secondary);
 }
 
 .sidebar-open .sidebar-tab {
@@ -278,11 +284,11 @@ body {
   transform: translateX(-100%);
   transition: transform var(--transition-duration) ease;
   position: fixed;
-  top: calc(var(--header-height) + 32px);
+  top: calc(var(--header-height) + 32px + var(--band-buttons-height)); /* Adjust top position */
   left: 0;
   width: var(--sidebar-width-desktop);
-  height: calc(100vh - var(--header-height) - 32px);
-  background: linear-gradient(to top, var(--color-sidebar-gradient-end), var(--color-sidebar-gradient-start));
+  height: calc(100vh - var(--header-height) - 32px - var(--band-buttons-height)); /* Adjust height */
+  background: linear-gradient(to top, var(--color-primary), var(--color-primary)); /* Use primary color */
   color: var(--sidebar-text-color);
   padding: var(--gap);
   box-sizing: border-box;
@@ -314,9 +320,9 @@ body {
 
 .sidebar-title h2 {
   margin-top: 0;
-  color: var(--color-yellow);
+  color: var(--color-secondary);
   font-size: 1.2em;
-  border-bottom: 2px solid var(--color-yellow);
+  border-bottom: 2px solid var(--color-secondary);
   padding-bottom: 5px;
   margin-bottom: 15px;
 }
@@ -336,9 +342,10 @@ body {
   cursor: pointer;
   transition: background-color var(--transition-duration) ease,
               color var(--transition-duration) ease;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2); /* Black with transparency */
   font-weight: bold;
   text-transform: uppercase;
+  color: var(--color-secondary); /* Use secondary color for list items */
 }
 
 #artists-list li:last-child,
@@ -350,8 +357,8 @@ body {
 #artists-list li:hover,
 #palf-list li:hover,
 #truvatos-list li:hover {
-  background-color: rgba(255, 215, 0, 0.1);
-  color: var(--color-yellow);
+  background-color: rgba(0, 0, 0, 0.1); /* Black with transparency */
+  color: var(--color-secondary);
 }
 
 #artists-list li.active,
@@ -387,8 +394,8 @@ body {
 }
 
 .panel-header {
-  background-color: var(--color-yellow);
-  color: var(--color-black);
+  background-color: var(--color-secondary); /* Secondary color for header background */
+  color: var(--color-primary); /* Primary color for header text */
   padding: 10px var(--gap);
   font-weight: bold;
   text-transform: uppercase;
@@ -420,9 +427,9 @@ body {
   position: fixed;
   bottom: var(--gap);
   left: var(--gap);
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border: 2px solid var(--color-yellow);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
@@ -441,9 +448,9 @@ body {
 }
 
 .private-data-button:hover {
-  background-color: var(--color-yellow);
-  color: var(--color-black);
-  box-shadow: 0 0 8px var(--color-yellow);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  box-shadow: 0 0 8px var(--color-secondary);
 }
 
 @media (max-width: 768px) {
@@ -481,8 +488,8 @@ body {
 
   .container,
   .content-section {
-    padding-top: calc(var(--header-height) + 64px + var(--gap));
-    height: calc(100vh - var(--header-height) - 64px - var(--gap));
+    padding-top: calc(var(--header-height) + 64px + var(--band-buttons-height) + var(--gap)); /* Adjust padding for mobile */
+    height: calc(100vh - var(--header-height) - 64px - var(--band-buttons-height) - var(--gap)); /* Adjust height for mobile */
   }
 
   .sidebar-tab {
@@ -497,8 +504,8 @@ body {
   }
 
   .artist-list-section {
-    top: calc(var(--header-height) + 64px);
-    height: calc(100vh - var(--header-height) - 64px);
+    top: calc(var(--header-height) + 64px + var(--band-buttons-height)); /* Adjust top position for mobile */
+    height: calc(100vh - var(--header-height) - 64px - var(--band-buttons-height)); /* Adjust height for mobile */
     width: var(--sidebar-width-desktop);
   }
 
@@ -525,13 +532,14 @@ body {
   }
 }
 
+/* Password Overlay Styles - Updated for two colors */
 .password-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(255, 255, 255, 0.95); /* Primary with transparency */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -539,8 +547,8 @@ body {
 }
 
 .password-box {
-  background-color: var(--color-black);
-  border: 2px solid var(--color-yellow);
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
   border-radius: 8px;
   padding: 40px;
   text-align: center;
@@ -548,7 +556,7 @@ body {
 }
 
 .password-box h2 {
-  color: var(--color-yellow);
+  color: var(--color-secondary);
   margin: 0 0 20px 0;
   font-size: 24px;
 }
@@ -557,17 +565,17 @@ body {
   width: 200px;
   padding: 10px;
   margin: 10px 0;
-  background-color: var(--color-black);
-  border: 1px solid var(--color-yellow);
-  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary); /* Secondary color for input text */
   border-radius: 4px;
   text-align: center;
   font-size: 16px;
 }
 
 .password-box button {
-  background-color: var(--color-yellow);
-  color: var(--color-black);
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
   border: none;
   padding: 10px 20px;
   margin-top: 10px;
@@ -579,12 +587,12 @@ body {
 }
 
 .password-box button:hover {
-  background-color: var(--color-white);
-  box-shadow: 0 0 10px var(--color-yellow);
+  background-color: var(--color-secondary); /* Keep secondary on hover */
+  box-shadow: 0 0 10px var(--color-secondary);
 }
 
 .error-message {
-  color: #ff4444;
+  color: var(--color-secondary); /* Use secondary color for error message */
   margin-top: 10px;
   font-size: 14px;
   min-height: 20px;
